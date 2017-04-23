@@ -1,0 +1,17 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "d3": "^4.8.0",
+    "fastclick": "^1.0.6",
+    "normalize.css": "^6.0.0",
+    "rangeslider.js": "^2.3.0"
+  }
+}
