@@ -1,1 +1,52 @@
-!function(a){var b=a.select("svg"),c=a.range(15),d=a.scaleOrdinal(a.schemeCategory20c),e=b.selectAll("circle").data(c).enter().append("circle").attr("cx",500).attr("cy",150).attr("r",function(a,b){return 40+40*b-1}).style("fill","none").style("stroke",function(a,b){return d(b)}).style("stroke-width",38).style("shape-rendering","crispEdges").attr("stroke-dasharray",function(){return this.getTotalLength()}).attr("stroke-dashoffset",function(){return 0});b.on("click",function(){e.transition().duration(2e3).ease(a.easeExpInOut).attr("stroke-dasharray",function(){var a=this,b=a.getTotalLength();return Math.random()*b}).attr("stroke-dashoffset",function(){var a=this,b=a.getTotalLength();return Math.random()*b})})}(window.d3);
+;(function (d3) {
+  var svg = d3.select('svg')
+
+  var width = 1000
+  var height = 300
+
+  var data = d3.range(15)
+
+  var sh = 40
+
+  var colors = d3.scaleOrdinal(d3.schemeCategory20c)
+
+  var paths = svg.selectAll('circle')
+        .data(data)
+        .enter()
+        .append('circle')
+        .attr('cx', width / 2)
+        .attr('cy', height / 2)
+        .attr('r', function (d, i) {
+          return 40 + (i * sh) - 1
+        })
+        .style('fill', 'none')
+        .style('stroke', function (d, i) {
+          return colors(i)
+        })
+        .style('stroke-width', sh - 2)
+        // .style('shape-rendering', 'crispEdges')
+        .attr('stroke-dasharray', function () {
+          var myPath = this
+          var length = myPath.getTotalLength()
+          return length
+        })
+        .attr('stroke-dashoffset', function () {
+          return 0
+        })
+
+  svg.on('click', function () {
+    paths.transition()
+            .duration(2000)
+            .ease(d3.easeExpInOut)
+            .attr('stroke-dasharray', function () {
+              var myPath = this
+              var length = myPath.getTotalLength()
+              return Math.random() * length
+            })
+            .attr('stroke-dashoffset', function () {
+              var myPath = this
+              var length = myPath.getTotalLength()
+              return Math.random() * length
+            })
+  })
+})(window.d3)

@@ -24,7 +24,7 @@
           return colors(i)
         })
         .style('stroke-width', sh - 2)
-        .style('shape-rendering', 'crispEdges')
+        // .style('shape-rendering', 'crispEdges')
         .attr('stroke-dasharray', function () {
           var myPath = this
           var length = myPath.getTotalLength()

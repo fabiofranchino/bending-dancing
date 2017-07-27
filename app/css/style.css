@@ -25,3 +25,33 @@
 		flex-direction: row;
 	}
 }
+
+
+#main {
+	overflow: hidden;
+	font-family: 'Lato', sans-serif;
+}
+
+#main .learn{
+	position: absolute;
+	bottom: .2rem;
+	left:.2rem;
+	padding: 1rem;
+}
+
+
+#main .learn a{
+	text-decoration: none;
+	text-transform: uppercase;
+	color: black;
+	background-color: yellow;
+	padding: .75rem;
+	font-family: sans-serif;
+	font-size: .8rem;
+}
+
+#main .learn a:hover{
+	color: yellow;
+	background-color: black;
+
+}
