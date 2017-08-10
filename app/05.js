@@ -12,11 +12,10 @@
     return ob
   })
 
-  // var colors = d3.scaleLinear()
-  //   .domain([0, data.length])
-  //   .interpolate(d3.interpolateHcl)
-  //   .range([d3.rgb('orange'), d3.rgb('purple')])
-  var colors = d3.scaleOrdinal(d3.schemeCategory20c)
+  var colors = d3.scaleLinear()
+    .domain([0, data.length])
+    .interpolate(d3.interpolateHcl)
+    .range([d3.rgb('orange'), d3.rgb('purple')])
 
   var paths = svg.selectAll('circle')
         .data(data)

@@ -8,8 +8,6 @@
 
   var sh = 40
 
-  var colors = d3.scaleOrdinal(d3.schemeCategory20c)
-
   var paths = svg.selectAll('circle')
         .data(data)
         .enter()
@@ -20,9 +18,7 @@
           return 40 + (i * sh) - 1
         })
         .style('fill', 'none')
-        .style('stroke', function (d, i) {
-          return colors(i)
-        })
+        .style('stroke', '#000')
         .style('stroke-width', sh - 2)
         // .style('shape-rendering', 'crispEdges')
         .attr('stroke-dasharray', function () {

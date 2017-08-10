@@ -1,3 +1,3 @@
-# Svg Stroke Magic
+# Bending Dancing
 
-Source files ('app' folder) of the tutorial article [Svg Stroke Magic](https://fabiofranchino.com/blog/aframe-d3js-first-steps/)
+Source files ('app' folder) of the tutorial article [Bending Dancing](https://fabiofranchino.com/blog/bending-dancing/)

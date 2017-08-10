@@ -7,6 +7,18 @@
     .style('text-anchor', 'middle')
     .style('font-size', '10')
     .text('CLICK TO CHANGE')
+    .style('opacity', 0)
+
+  txt.transition()
+    .duration(2000)
+    .delay(5000)
+    .style('opacity', 1)
+
+  d3.select('.learn')
+    .transition()
+    .duration(2000)
+    .delay(10000)
+    .style('opacity', 1)
 
   var togg = false
   var timer
