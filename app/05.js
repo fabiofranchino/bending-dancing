@@ -7,7 +7,7 @@
   var pv = 10
   var data = d3.range(18).map(function (d, i) {
     var v = Math.random() * 100 + 5
-    var ob = {i: i, v: v, pv: pv}
+    var ob = {i: i, v: v, pv: pv, x: width / 2, y: height / 2, r: pv + v / 2}
     pv += v
     return ob
   })
@@ -17,14 +17,15 @@
     .interpolate(d3.interpolateHcl)
     .range([d3.rgb('orange'), d3.rgb('purple')])
 
-  var paths = svg.selectAll('circle')
+  var paths = svg.selectAll('path')
         .data(data)
         .enter()
-        .append('circle')
-        .attr('cx', width / 2)
-        .attr('cy', height / 2)
-        .attr('r', function (d, i) {
-          return d.pv + d.v / 2
+        .append('path')
+        .attr('d', d => {
+          return 'M' + d.x + ',' + d.y + ' ' +
+           'm' + -d.r + ', 0 ' +
+           'a' + d.r + ',' + d.r + ' 0 1,0 ' + d.r * 2 + ',0 ' +
+           'a' + d.r + ',' + d.r + ' 0 1,0 ' + -d.r * 2 + ',0Z'
         })
         .style('fill', 'none')
         .style('transform-origin', 'center')
@@ -61,18 +62,21 @@
     var pv = 10
     var data = d3.range(18).map(function (d, i) {
       var v = Math.random() * 100 + 5
-      var ob = {i: i, v: v, pv: pv}
+      var ob = {i: i, v: v, pv: pv, x: width / 2, y: height / 2, r: pv + v / 2}
       pv += v
       return ob
     })
 
-    svg.selectAll('circle')
+    svg.selectAll('path')
         .data(data)
         .transition()
         .duration(2000)
         .ease(d3.easeExpInOut)
-        .attr('r', function (d, i) {
-          return d.pv + d.v / 2
+        .attr('d', d => {
+          return 'M' + d.x + ',' + d.y + ' ' +
+           'm' + -d.r + ', 0 ' +
+           'a' + d.r + ',' + d.r + ' 0 1,0 ' + d.r * 2 + ',0 ' +
+           'a' + d.r + ',' + d.r + ' 0 1,0 ' + -d.r * 2 + ',0Z'
         })
         .attr('stroke-width', function (d, i) {
           return d.v

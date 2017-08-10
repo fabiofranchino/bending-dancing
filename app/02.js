@@ -4,22 +4,26 @@
   var width = 1000
   var height = 300
 
-  var data = d3.range(10)
+  var data = d3.range(15).map(function (d, i) {
+    return [{i: i, x: 0}, {i: i, x: 1}]
+  })
 
   var sh = height / data.length
+
+  var ln = d3.line()
+        .x(function (d, i) {
+          return width * d.x
+        })
+        .y(function (d, i) {
+          return d.i * sh
+        })
+        .curve(d3.curveLinearClosed)
 
   var paths = svg.selectAll('path')
         .data(data)
         .enter()
-        .append('line')
-        .attr('x1', 0)
-        .attr('y1', function (d, i) {
-          return sh / 2 + i * sh
-        })
-        .attr('x2', width)
-        .attr('y2', function (d, i) {
-          return sh / 2 + i * sh
-        })
+        .append('path')
+        .attr('d', ln)
         .style('fill', 'none')
         .style('stroke', 'black')
         .style('stroke-width', sh - 1)
